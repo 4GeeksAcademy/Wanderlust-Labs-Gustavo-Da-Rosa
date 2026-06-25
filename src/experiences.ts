@@ -6,6 +6,7 @@ export interface Experience {
   destination: string;
   price: number;
   rating: number;
+  image: string;
   imageUrl: string;
 }
 
@@ -139,6 +140,59 @@ const categoryTitlePrefix: Record<Experience['category'], string> = {
   Nature: 'Naturaleza',
 };
 
+const categoryImagePools: Record<Experience['category'], string[]> = {
+  Adventure: [
+    'https://images.unsplash.com/photo-1464822759844-d150ad6d7f54?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1520962880247-cfaf541c8724?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1473447198193-c7c1f7d2f549?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1465311530779-5241f5a29892?auto=format&fit=crop&w=1400&q=80',
+  ],
+  Culture: [
+    'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1400&q=80',
+  ],
+  Food: [
+    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1400&q=80',
+  ],
+  Wellness: [
+    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1532798442725-41036acc7489?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=1400&q=80',
+  ],
+  Nature: [
+    'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=80',
+    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80',
+  ],
+};
+
+const activityImageOverrides: Partial<
+  Record<Experience['category'], Partial<Record<number, string>>>
+> = {
+  Adventure: {
+    0: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=80',
+    3: 'https://images.unsplash.com/photo-1544198365-f5d60b6d8190?auto=format&fit=crop&w=1400&q=80',
+    5: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=1400&q=80',
+    8: 'https://images.unsplash.com/photo-1458442310124-dde6edb43d10?auto=format&fit=crop&w=1400&q=80',
+    10: 'https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=1400&q=80',
+    13: 'https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=1400&q=80',
+    15: 'https://images.unsplash.com/photo-1478860409698-8707f313ee8b?auto=format&fit=crop&w=1400&q=80',
+    18: 'https://images.unsplash.com/photo-1482192505345-5655af888cc4?auto=format&fit=crop&w=1400&q=80',
+  },
+};
+
 const buildTitle = (
   category: Experience['category'],
   seed: ExperienceSeed,
@@ -170,6 +224,9 @@ export const experiences: Experience[] = (Object.entries(experienceSeedsByCatego
     const id = `exp-${String(categoryIndex * 20 + seedIndex + 1).padStart(3, '0')}`;
     const priceAdjustment = (seedIndex % 4) * 7 + categoryIndex * 3;
     const ratingAdjustment = ((seedIndex + categoryIndex) % 3) * 0.05;
+    const image =
+      activityImageOverrides[category]?.[seedIndex] ??
+      categoryImagePools[category][seedIndex % categoryImagePools[category].length];
 
     return {
       id,
@@ -179,7 +236,8 @@ export const experiences: Experience[] = (Object.entries(experienceSeedsByCatego
       destination: seed.destination,
       price: seed.basePrice + priceAdjustment,
       rating: Number(Math.min(5, seed.baseRating + ratingAdjustment).toFixed(1)),
-      imageUrl: `https://images.wanderlust.example/experiences/${seed.imageSlug}.jpg`,
+      image,
+      imageUrl: image,
     };
   }),
 );

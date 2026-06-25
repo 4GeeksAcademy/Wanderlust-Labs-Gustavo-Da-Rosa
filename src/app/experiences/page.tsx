@@ -41,18 +41,12 @@ function ExperiencesContent() {
   };
 
   return (
-    <section className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-8 sm:py-10">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Experiencias - Wanderlust
-        </h1>
-        <p className="text-sm text-slate-600 sm:text-base">
-          Explora tours y actividades unicas alrededor del mundo.
-        </p>
-      </header>
+    <section className="min-h-screen w-full bg-white">
+      <div className="mx-auto w-full max-w-7xl px-6 py-8 sm:py-10">
+        <h1 className="mb-6 text-2xl font-bold text-gray-900">Experiencias - Wanderlust</h1>
 
-      <div className="flex w-full flex-col gap-4 lg:flex-row lg:items-stretch">
-        <div className="w-full lg:w-5/12">
+        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 rounded-full border border-gray-200 bg-white p-4 shadow-sm md:flex-row">
+          <div className="w-full md:flex-1">
           <SearchBar
             value={filters.search ?? ''}
             onChange={(val) =>
@@ -61,9 +55,9 @@ function ExperiencesContent() {
               })
             }
           />
-        </div>
+          </div>
 
-        <div className="w-full lg:w-7/12">
+          <div className="w-full md:flex-1">
           <FilterBar
             categories={[...categories]}
             category={filters.category ?? ''}
@@ -79,33 +73,27 @@ function ExperiencesContent() {
               })
             }
           />
+          </div>
         </div>
-      </div>
 
-      {filteredExperiences.length === 0 ? (
-        <div className="flex min-h-[260px] flex-col items-center justify-center rounded-3xl border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
-          <span className="mb-3 text-4xl text-slate-400" aria-hidden="true">
-            ☹
-          </span>
-          <p className="text-xl font-semibold tracking-tight text-slate-600">
-            No se encontraron resultados
-          </p>
-          <p className="mt-2 max-w-md text-sm text-slate-500 sm:text-base">
-            Prueba con otra busqueda o ajusta los filtros para descubrir mas opciones.
-          </p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filteredExperiences.map((experience) => (
-            <ExperienceCard
-              key={experience.id}
-              experience={experience}
-              isFavorite={favorites.includes(experience.id)}
-              onToggleFavorite={toggleFavorite}
-            />
-          ))}
-        </div>
-      )}
+        {filteredExperiences.length === 0 ? (
+          <div className="mt-8 flex min-h-[220px] flex-col items-center justify-center rounded-2xl border border-gray-200 bg-white px-6 py-10 text-center shadow-sm">
+            <p className="text-lg font-medium text-gray-600">No se encontraron resultados</p>
+            <p className="mt-2 text-sm text-gray-500">Ajusta los filtros para descubrir mas experiencias.</p>
+          </div>
+        ) : (
+          <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {filteredExperiences.map((experience) => (
+              <ExperienceCard
+                key={experience.id}
+                experience={experience}
+                isFavorite={favorites.includes(experience.id)}
+                onToggleFavorite={toggleFavorite}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 }

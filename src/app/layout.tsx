@@ -26,10 +26,10 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full bg-white antialiased`}
     >
-      <body className="min-h-full bg-white text-slate-900">
-        <div className="fixed inset-x-0 top-0 z-50">
+      <body className="min-h-full bg-white text-gray-900">
+        <div className="fixed inset-x-0 top-0 z-50 bg-white">
           <Navbar />
         </div>
         <main className="mx-auto flex min-h-screen w-full flex-col pt-16">

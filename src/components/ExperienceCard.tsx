@@ -14,6 +14,9 @@ export default function ExperienceCard({
   isFavorite,
   onToggleFavorite,
 }: ExperienceCardProps) {
+  const numericId = Number(experience.id.replace(/\D/g, '')) || 0;
+  const reviewsCount = 80 + (numericId % 920);
+
   const handleFavoriteClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -21,12 +24,12 @@ export default function ExperienceCard({
   };
 
   return (
-    <article className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg">
-      <div className="relative">
+    <article className="flex flex-col bg-white overflow-hidden">
+      <div className="relative mb-3">
         <img
-          src={experience.imageUrl}
+          src={experience.image || experience.imageUrl}
           alt={experience.title}
-          className="h-56 w-full rounded-t-2xl object-cover"
+          className="rounded-xl aspect-[4/3] object-cover w-full"
           loading="lazy"
         />
 
@@ -34,7 +37,7 @@ export default function ExperienceCard({
           type="button"
           onClick={handleFavoriteClick}
           aria-label={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-          className="absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow-sm backdrop-blur transition hover:scale-105"
+          className="absolute right-2.5 top-2.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/75 backdrop-blur-sm transition hover:bg-white"
         >
           <svg
             viewBox="0 0 24 24"
@@ -49,16 +52,23 @@ export default function ExperienceCard({
         </button>
       </div>
 
-      <div className="space-y-2 p-4">
-        <p className="text-sm font-medium text-slate-500">{experience.destination}</p>
-        <h3 className="text-lg font-semibold leading-tight text-slate-900">{experience.title}</h3>
+      <div className="flex flex-1 flex-col">
+        <p className="text-xs text-gray-500 font-medium tracking-wide">
+          {experience.destination} · {experience.category}
+        </p>
+        <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 mt-1 leading-snug">
+          {experience.title}
+        </h3>
 
-        <div className="flex items-center justify-between">
-          <p className="inline-flex items-center gap-1 text-sm font-medium text-slate-700">
-            <span className="text-amber-500">★</span>
-            {experience.rating.toFixed(1)}
-          </p>
-          <p className="text-base font-bold text-slate-900">${experience.price}</p>
+        <p className="text-xs text-gray-600 flex items-center gap-1 mt-1">
+          <span className="text-amber-500">★</span>
+          <span>{experience.rating.toFixed(1)}</span>
+          <span>({reviewsCount})</span>
+        </p>
+
+        <div className="mt-3 flex items-end justify-between">
+          <p className="text-xs text-gray-600">Desde <span className="font-bold text-gray-900">USD {experience.price}</span></p>
+          <p className="text-xs text-gray-500">por persona</p>
         </div>
       </div>
     </article>

@@ -16,43 +16,36 @@ export default function FilterBar({
   onDestinationChange,
 }: FilterBarProps) {
   return (
-    <section
-      className="w-full rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
-      aria-label="Filtros de experiencias"
-    >
-      <div className="flex flex-col gap-3 md:flex-row md:items-end">
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="category-filter" className="text-sm font-medium text-gray-700">
-            Categoria
-          </label>
-          <select
-            id="category-filter"
-            value={category}
-            onChange={(event) => onCategoryChange(event.target.value)}
-            className="w-full rounded-xl border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-          >
-            <option value="">Todas las categorias</option>
-            {categories.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
+    <section className="w-full" aria-label="Filtros de experiencias">
+      <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center">
+        <label htmlFor="category-filter" className="sr-only">
+          Categoria
+        </label>
+        <select
+          id="category-filter"
+          value={category}
+          onChange={(event) => onCategoryChange(event.target.value)}
+          className="w-full rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-700 shadow-sm transition hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          <option value="">Todas las categorias</option>
+          {categories.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
 
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="destination-filter" className="text-sm font-medium text-gray-700">
-            Destino
-          </label>
-          <input
-            id="destination-filter"
-            type="text"
-            value={destination}
-            onChange={(event) => onDestinationChange(event.target.value)}
-            placeholder="Ciudad o pais"
-            className="w-full rounded-xl border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-          />
-        </div>
+        <label htmlFor="destination-filter" className="sr-only">
+          Destino
+        </label>
+        <input
+          id="destination-filter"
+          type="text"
+          value={destination}
+          onChange={(event) => onDestinationChange(event.target.value)}
+          placeholder="Destino"
+          className="w-full rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-700 shadow-sm transition hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
       </div>
     </section>
   );

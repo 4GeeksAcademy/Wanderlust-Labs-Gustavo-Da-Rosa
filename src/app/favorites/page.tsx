@@ -50,32 +50,30 @@ export default function FavoritesPage() {
   };
 
   return (
-    <section className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-8 sm:py-10">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Favoritos - Wanderlust
-        </h1>
-        <p className="text-sm text-slate-600 sm:text-base">
-          Aqui veras solo las experiencias guardadas como favoritas.
-        </p>
-      </header>
+    <section className="min-h-screen w-full bg-white">
+      <div className="mx-auto w-full max-w-7xl px-6 py-8 sm:py-10">
+        <h1 className="mb-6 text-2xl font-bold text-gray-900">Favoritos - Wanderlust</h1>
 
-      {favoriteExperiences.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center text-slate-700">
-          No tienes experiencias favoritas todavia
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {favoriteExperiences.map((experience) => (
-            <ExperienceCard
-              key={experience.id}
-              experience={experience}
-              isFavorite={favorites.includes(experience.id)}
-              onToggleFavorite={toggleFavorite}
-            />
-          ))}
-        </div>
-      )}
+        {favoriteExperiences.length === 0 ? (
+          <div className="mt-8 flex min-h-[220px] flex-col items-center justify-center rounded-2xl border border-gray-200 bg-white px-6 py-10 text-center shadow-sm">
+            <p className="text-lg font-medium text-gray-600">No tienes experiencias favoritas todavia</p>
+            <p className="mt-2 text-sm text-gray-500">
+              Marca experiencias con el corazon para verlas aqui.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {favoriteExperiences.map((experience) => (
+              <ExperienceCard
+                key={experience.id}
+                experience={experience}
+                isFavorite={favorites.includes(experience.id)}
+                onToggleFavorite={toggleFavorite}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 }
