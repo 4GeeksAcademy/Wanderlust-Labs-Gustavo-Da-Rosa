@@ -17,7 +17,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder="Buscar experiencias"
-        className="w-full rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-700 shadow-sm transition hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="w-full rounded-xl border border-outline/80 bg-surface-soft px-4 py-3 text-sm text-slate-800 shadow-sm transition hover:border-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/25"
       />
     </div>
   );

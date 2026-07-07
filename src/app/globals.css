@@ -1,25 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcf9f8;
+  --foreground: #1c1b1b;
+  --surface: #ffffff;
+  --surface-soft: #f6f3f2;
+  --outline: #c3c6d1;
+  --primary: #001e40;
+  --secondary: #9b4500;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-outline: var(--outline);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-on-background: var(--foreground);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 html, body {
-  background-color: #ffffff !important;
+  background-color: var(--background) !important;
   overscroll-behavior-y: none;
+}
+
+body {
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.glass-nav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.card-surface {
+  background: var(--surface);
+  border: 1px solid color-mix(in oklab, var(--outline) 48%, white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }

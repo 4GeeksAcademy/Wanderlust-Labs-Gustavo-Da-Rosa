@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#999c9e",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e0e3e5",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#001b3c",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#ffb68d",
+                    "surface-dim": "#dcd9d9",
+                    "surface-variant": "#e5e2e1",
+                    "on-surface": "#1c1b1b",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "secondary-container": "#fc8a40",
+                    "background": "#fcf9f8",
+                    "tertiary": "#1b1f21",
+                    "on-secondary-container": "#672c00",
+                    "on-tertiary-fixed-variant": "#434749",
+                    "on-tertiary-fixed": "#181c1e",
+                    "outline-variant": "#c3c6d1",
+                    "primary": "#001e40",
+                    "inverse-primary": "#a7c8ff",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "on-secondary": "#ffffff",
+                    "outline": "#737780",
+                    "surface-tint": "#3a5f94",
+                    "surface": "#fcf9f8",
+                    "surface-container": "#f0eded",
+                    "on-surface-variant": "#43474f",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "secondary": "#9b4500",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "primary-container": "#003366",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#799dd6",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#763300",
+                    "primary-fixed": "#d5e3ff",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fcf9f8",
+                    "surface-container-high": "#eae7e7",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-secondary-fixed": "#331200",
+                    "tertiary-container": "#303436",
+                    "secondary-fixed": "#ffdbc9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .stats-card {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e2e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">Wanderlust Labs</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md" href="#">Explore</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md" href="#">Stays</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md" href="#">Adventures</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md" href="#">Journal</a>
+</div>
+<div class="hidden md:flex items-center space-x-4">
+<button class="px-6 py-2 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:opacity-80 active:scale-95 transition-all">Log In</button>
+<button class="px-6 py-2 rounded-full font-label-sm text-label-sm bg-primary text-on-primary hover:opacity-80 active:scale-95 transition-all">Sign Up</button>
+</div>
+<!-- Mobile Menu Icon (Placeholder) -->
+<div class="md:hidden">
+<span class="material-symbols-outlined text-on-surface">menu</span>
+</div>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 pb-32 md:pb-12">
+<!-- Profile Header Section -->
+<section class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16">
+<div class="relative group">
+<div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-surface-container-lowest stats-card">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a charismatic traveler named Alex Wanderer, set against a blurred background of a sun-drenched Mediterranean coastal village. The lighting is warm and golden, highlighting a friendly and adventurous expression. The aesthetic is clean, editorial, and high-end, using a soft depth of field that emphasizes the subject's connection to global exploration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq4iOR-MX_x-OuH3ocemUnuZR0VAMASOy_kH56df3sH6NpjkziKctOkc-57n7SavXqDL1T8IWr5pS6plOUZGdlto1MTBasJ-YER7ckeR2X1a8tTTFLWAsKHc-JMYkHgfVfAfgNxKdQhSVSVtv5Oel4Df6hx3c7vzTunu94GaX8zm4rHI3FWmMg3nmSMU2okRNAPV_8aEWW634yfrPFO-cnPe8DDCsfhE_ya3PxdEe9BbFwuYs3gZIJQMSOypZ2Vbkm6SteZFG6IvJt"/>
+</div>
+<button class="absolute bottom-2 right-2 bg-secondary text-on-secondary p-2 rounded-full shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="flex-1 text-center md:text-left space-y-4">
+<div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight">Alex Wanderer</h1>
+<p class="text-on-surface-variant font-body-md">Explorador de corazón • Buscador de atardeceres</p>
+</div>
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl stats-card flex flex-col items-center md:items-start">
+<span class="text-secondary font-display-lg text-display-lg-mobile">24</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Experiencias</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl stats-card flex flex-col items-center md:items-start">
+<span class="text-secondary font-display-lg text-display-lg-mobile">12</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Países</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl stats-card flex flex-col items-center md:items-start">
+<span class="text-secondary font-display-lg text-display-lg-mobile">86</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Favoritos</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Grid: Upcoming Trips & Settings -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Left Column: Upcoming Trips (Main Feed) -->
+<div class="lg:col-span-2 space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-primary">Próximos Viajes</h2>
+<button class="text-secondary font-label-sm text-label-sm flex items-center hover:underline">
+                        Ver todos <span class="material-symbols-outlined ml-1">chevron_right</span>
+</button>
+</div>
+<!-- Trip Card 1 -->
+<div class="group relative bg-surface-container-lowest rounded-2xl overflow-hidden stats-card transition-all duration-300 hover:-translate-y-1">
+<div class="grid md:grid-cols-5 h-full">
+<div class="md:col-span-2 h-48 md:h-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A breathtaking view of the Santorini caldera during the blue hour, featuring white-washed architecture with blue domes perched on dark volcanic cliffs. The Aegean sea is calm and deep indigo. The lighting is soft and ambient with twinkling lights from the village. The composition is modern and editorial, capturing a sense of luxury and serene exploration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASh18cDaUOGvi2oNKFG9VIs26VUXyD062KSdF1be2hibaGI6rwu0CPcPb_4eT6wu7uNNxYYW872AvduHcyYxa2BLEg4hRHgohZEqgOu4OEYEmWlqXDxwA-TG4thN6Ljj5jVeUWQl2e28E1Uz6X-x7rXQgtpXhz5ILRrw_Pnw9FJORFaOv_f5_JVF0trS5nzAI9JVqYr5Mkaw0e_vmO6MkxvZocARlwEj4G64BzhtC-dPFh460AoIdxR225Al3JB_3aIMGkBoIKEBSY"/>
+</div>
+<div class="md:col-span-3 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] px-3 py-1 rounded-full uppercase font-bold tracking-tighter">En 12 días</span>
+<span class="text-secondary flex items-center font-bold">
+<span class="material-symbols-outlined text-sm mr-1">star</span> 4.9
+                                    </span>
+</div>
+<h3 class="font-headline-md text-xl mb-1">Aventura en las Cícladas</h3>
+<p class="text-on-surface-variant text-sm mb-4">Santorini, Grecia • 7 noches</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-label-sm text-label-sm hover:opacity-90 transition-opacity">Ver Itinerario</button>
+<button class="p-3 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="pt-8">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Actividad Reciente</h2>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant/30">
+<div class="w-12 h-12 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md"><span class="font-bold">Has guardado</span> 'Cabaña en el Bosque Nuboso'</p>
+<p class="text-xs text-on-surface-variant">Ayer, 18:45</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">arrow_forward</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant/30">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">reviews</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md"><span class="font-bold">Reseña publicada</span> para 'Hotel de Hielo'</p>
+<p class="text-xs text-on-surface-variant">Hace 3 días</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Settings & Quick Actions -->
+<div class="space-y-8">
+<div class="bg-surface-container-low p-8 rounded-2xl">
+<h3 class="font-headline-md text-lg mb-6">Configuración</h3>
+<nav class="space-y-2">
+<a class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white stats-card transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">person_edit</span>
+<span class="font-body-md">Editar Perfil</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white stats-card transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">shield</span>
+<span class="font-body-md">Privacidad</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white stats-card transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">help</span>
+<span class="font-body-md">Ayuda y Soporte</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white stats-card transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">payments</span>
+<span class="font-body-md">Pagos</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_right</span>
+</a>
+</nav>
+<button class="w-full mt-8 py-3 text-error font-bold text-label-sm border border-error/20 rounded-xl hover:bg-error/5 transition-colors">
+                        Cerrar Sesión
+                    </button>
+</div>
+<!-- Referral Widget -->
+<div class="bg-primary text-on-primary p-8 rounded-2xl relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-headline-md text-lg mb-2">Invita a un amigo</h4>
+<p class="text-on-primary-container text-sm mb-6">Regala $50 en su primer viaje y obtén $25 para ti.</p>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-label-sm text-label-sm hover:scale-105 transition-transform">Compartir enlace</button>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">card_giftcard</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-16 bg-surface-container-low dark:bg-tertiary-container">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="font-headline-md text-headline-md text-primary mb-2">Wanderlust Labs</div>
+<p class="text-on-surface-variant font-body-md">© 2024 Wanderlust Labs. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">Safety</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">Terms</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">Privacy</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">Careers</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-4 bg-surface dark:bg-surface-container pb-safe md:hidden z-50 border-t border-outline-variant shadow-lg">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-low active:scale-90 transition-all">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-low active:scale-90 transition-all">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-container-low active:scale-90 transition-all">
+<span class="material-symbols-outlined">luggage</span>
+<span class="font-label-sm text-label-sm">Trips</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-container font-bold active:scale-90 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for Stat Cards on scroll/load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.stats-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+
+        // Simple smooth scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

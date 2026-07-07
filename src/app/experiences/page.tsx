@@ -1,51 +1,25 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import ExperienceCard from '../../components/ExperienceCard';
+import { useFavorites } from '../../components/FavoritesProvider';
 import FilterBar from '../../components/FilterBar';
 import SearchBar from '../../components/SearchBar';
 import { useExperiencesFilter } from '../../hooks/useExperiencesFilter';
 
 const categories = ['Adventure', 'Culture', 'Food', 'Wellness', 'Nature'] as const;
-const FAVORITES_STORAGE_KEY = 'wanderlust-favorites';
 
 function ExperiencesContent() {
   const { filteredExperiences, updateFilters, filters } = useExperiencesFilter();
-  const [favorites, setFavorites] = useState<string[]>([]);
-
-  useEffect(() => {
-    const storedFavorites = localStorage.getItem(FAVORITES_STORAGE_KEY);
-    if (!storedFavorites) {
-      return;
-    }
-
-    try {
-      const parsedFavorites = JSON.parse(storedFavorites) as string[];
-      if (Array.isArray(parsedFavorites)) {
-        setFavorites(parsedFavorites);
-      }
-    } catch {
-      setFavorites([]);
-    }
-  }, []);
-
-  const toggleFavorite = (id: string) => {
-    setFavorites((prevFavorites) => {
-      const nextFavorites = prevFavorites.includes(id)
-        ? prevFavorites.filter((favoriteId) => favoriteId !== id)
-        : [...prevFavorites, id];
-
-      localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(nextFavorites));
-      return nextFavorites;
-    });
-  };
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   return (
-    <section className="min-h-screen w-full bg-white">
-      <div className="mx-auto w-full max-w-7xl px-6 py-8 sm:py-10">
-        <h1 className="mb-6 text-2xl font-bold text-gray-900">Experiencias - Wanderlust</h1>
+    <section className="min-h-screen w-full bg-background">
+      <div className="mx-auto w-full max-w-[1280px] px-4 py-8 sm:px-6 sm:py-12 lg:px-10">
+        <h1 className="font-display mb-2 text-3xl font-semibold text-primary sm:text-4xl">Explorador de experiencias</h1>
+        <p className="mb-7 text-sm text-slate-600 sm:text-base">Filtra por categoria, destino o titulo para encontrar tu proxima aventura.</p>
 
-        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 rounded-full border border-gray-200 bg-white p-4 shadow-sm md:flex-row">
+        <div className="card-surface mx-auto flex w-full max-w-5xl flex-col items-center gap-3 rounded-2xl p-3 sm:p-4 md:flex-row">
           <div className="w-full md:flex-1">
           <SearchBar
             value={filters.search ?? ''}
@@ -77,17 +51,17 @@ function ExperiencesContent() {
         </div>
 
         {filteredExperiences.length === 0 ? (
-          <div className="mt-8 flex min-h-[220px] flex-col items-center justify-center rounded-2xl border border-gray-200 bg-white px-6 py-10 text-center shadow-sm">
-            <p className="text-lg font-medium text-gray-600">No se encontraron resultados</p>
-            <p className="mt-2 text-sm text-gray-500">Ajusta los filtros para descubrir mas experiencias.</p>
+          <div className="card-surface mt-8 flex min-h-[240px] flex-col items-center justify-center rounded-2xl px-6 py-10 text-center">
+            <p className="font-display text-2xl font-semibold text-primary">No se encontraron resultados</p>
+            <p className="mt-2 text-sm text-slate-500">Ajusta los filtros para descubrir mas experiencias.</p>
           </div>
         ) : (
-          <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filteredExperiences.map((experience) => (
               <ExperienceCard
                 key={experience.id}
                 experience={experience}
-                isFavorite={favorites.includes(experience.id)}
+                isFavorite={isFavorite(experience.id)}
                 onToggleFavorite={toggleFavorite}
               />
             ))}

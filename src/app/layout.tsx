@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
+import { FavoritesProvider } from "../components/FavoritesProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
@@ -26,15 +27,17 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full bg-white antialiased`}
+      className={`${inter.variable} ${montserrat.variable} h-full bg-white antialiased`}
     >
-      <body className="min-h-full bg-white text-gray-900">
-        <div className="fixed inset-x-0 top-0 z-50 bg-white">
-          <Navbar />
-        </div>
-        <main className="mx-auto flex min-h-screen w-full flex-col pt-16">
-          {children}
-        </main>
+      <body className="min-h-full bg-background text-on-background">
+        <FavoritesProvider>
+          <div className="fixed inset-x-0 top-0 z-50">
+            <Navbar />
+          </div>
+          <main className="mx-auto flex min-h-screen w-full flex-col pt-16">
+            {children}
+          </main>
+        </FavoritesProvider>
       </body>
     </html>
   );

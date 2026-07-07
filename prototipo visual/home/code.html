@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wanderlust Labs | Descubre Experiencias Extraordinarias</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#999c9e",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e0e3e5",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#001b3c",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#ffb68d",
+                    "surface-dim": "#dcd9d9",
+                    "surface-variant": "#e5e2e1",
+                    "on-surface": "#1c1b1b",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "secondary-container": "#fc8a40",
+                    "background": "#fcf9f8",
+                    "tertiary": "#1b1f21",
+                    "on-secondary-container": "#672c00",
+                    "on-tertiary-fixed-variant": "#434749",
+                    "on-tertiary-fixed": "#181c1e",
+                    "outline-variant": "#c3c6d1",
+                    "primary": "#001e40",
+                    "inverse-primary": "#a7c8ff",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "on-secondary": "#ffffff",
+                    "outline": "#737780",
+                    "surface-tint": "#3a5f94",
+                    "surface": "#fcf9f8",
+                    "surface-container": "#f0eded",
+                    "on-surface-variant": "#43474f",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "secondary": "#9b4500",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "primary-container": "#003366",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#799dd6",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#763300",
+                    "primary-fixed": "#d5e3ff",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fcf9f8",
+                    "surface-container-high": "#eae7e7",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-secondary-fixed": "#331200",
+                    "tertiary-container": "#303436",
+                    "secondary-fixed": "#ffdbc9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(0, 30, 64, 0.4) 0%, rgba(0, 30, 64, 0.1) 50%, rgba(252, 249, 248, 1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-surface/80 backdrop-blur-xl shadow-sm">
+<nav class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-headline-md text-headline-md font-bold text-primary tracking-tight" href="#">Wanderlust Labs</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-secondary border-b-2 border-secondary font-bold pb-1 font-body-md text-body-md" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Stays</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Adventures</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Journal</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="hidden md:block text-on-surface-variant font-label-sm text-label-sm hover:opacity-80 transition-opacity">Log In</button>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-label-sm text-label-sm active:scale-95 transition-transform">Sign Up</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0" data-alt="A breathtaking cinematic landscape of a rugged mountain range at sunset, with golden orange light reflecting off jagged peaks and a deep blue alpine lake in the foreground. The image is captured with a high-end editorial feel, utilizing soft focus in the distant clouds to emphasize depth. The lighting is warm and dramatic, following a premium travel aesthetic with rich tones and crystal-clear clarity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClpNFZ23TopfXwemHtnP0cDcDiktnsG7_l6b9tGUhlh1Lpe2SR60mjJZeuuMskwZuzMqp_YcG7Rr0e6C7fblFQDI5ly9Q9kJfRDm4idZoKftrl3QISe1NR8KiTP70peP2B1qAQMSIeXEeXRuPIXyuFi43_ka4B4_DwQqY0NDRURAxCiP1fn5-zt8Jt8EvBrjhNHV59QTAygdTbbX6oYcHObhIMl8N4K3esgNaBunqQZEBVs5iVLBeRjAIbgP22Cj4bpapIpXqKMRdd')">
+<div class="absolute inset-0 bg-black/20"></div>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+<span class="inline-block px-4 py-1.5 mb-6 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm uppercase tracking-widest animate-fade-in">Descubre el Mundo</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary max-w-4xl mx-auto mb-6 leading-tight">
+                    Descubre Experiencias Extraordinarias
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    Únete a una comunidad global de exploradores y vive aventuras únicas que van más allá de lo convencional. Tu próximo viaje comienza aquí.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="bg-secondary text-on-secondary px-10 py-5 rounded-full font-headline-md text-headline-md flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-lg" href="/experiences">
+                        Explore Now
+                        <span class="material-symbols-outlined">north_east</span>
+</a>
+<button class="bg-surface/80 backdrop-blur-md border border-outline-variant text-primary px-10 py-5 rounded-full font-headline-md text-headline-md hover:bg-surface transition-all">
+                        Ver Video
+                    </button>
+</div>
+</div>
+</section>
+<!-- Search Bar Overlay (Conceptual) -->
+<div class="max-w-4xl mx-auto -mt-16 relative z-20 px-margin-mobile">
+<div class="bg-surface shadow-2xl rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 border border-outline-variant">
+<div class="flex-1 w-full border-b md:border-b-0 md:border-r border-outline-variant pb-4 md:pb-0 md:pr-6">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-4">Destino</label>
+<div class="flex items-center gap-3 px-4 py-2 hover:bg-surface-container-low rounded-xl transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<span class="text-on-surface font-body-md text-body-md">¿A dónde quieres ir?</span>
+</div>
+</div>
+<div class="flex-1 w-full border-b md:border-b-0 md:border-r border-outline-variant pb-4 md:pb-0 md:pr-6">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-4">Fecha</label>
+<div class="flex items-center gap-3 px-4 py-2 hover:bg-surface-container-low rounded-xl transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+<span class="text-on-surface font-body-md text-body-md">Cualquier semana</span>
+</div>
+</div>
+<div class="flex-1 w-full pb-4 md:pb-0">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1 ml-4">Viajeros</label>
+<div class="flex items-center gap-3 px-4 py-2 hover:bg-surface-container-low rounded-xl transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-secondary">group</span>
+<span class="text-on-surface font-body-md text-body-md">¿Cuántos?</span>
+</div>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary p-5 rounded-xl active:scale-95 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<!-- Trending Categories -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Categorías en Tendencia</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Inspiración para tu próxima gran historia.</p>
+</div>
+<button class="text-secondary font-label-sm text-label-sm flex items-center gap-1 hover:underline">
+                    Ver todas <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<!-- Adventure -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-low rounded-3xl flex flex-col items-center justify-center gap-4 transition-all group-hover:bg-secondary-container/20 group-hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center shadow-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined text-4xl">hiking</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface group-hover:text-secondary">Adventure</span>
+</div>
+</div>
+<!-- Nature -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-low rounded-3xl flex flex-col items-center justify-center gap-4 transition-all group-hover:bg-secondary-container/20 group-hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center shadow-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined text-4xl">forest</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface group-hover:text-secondary">Nature</span>
+</div>
+</div>
+<!-- Food -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-low rounded-3xl flex flex-col items-center justify-center gap-4 transition-all group-hover:bg-secondary-container/20 group-hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center shadow-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined text-4xl">restaurant</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface group-hover:text-secondary">Food</span>
+</div>
+</div>
+<!-- Culture -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-low rounded-3xl flex flex-col items-center justify-center gap-4 transition-all group-hover:bg-secondary-container/20 group-hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center shadow-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined text-4xl">museum</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface group-hover:text-secondary">Culture</span>
+</div>
+</div>
+<!-- Wellness -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-low rounded-3xl flex flex-col items-center justify-center gap-4 transition-all group-hover:bg-secondary-container/20 group-hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center shadow-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined text-4xl">self_improvement</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface group-hover:text-secondary">Wellness</span>
+</div>
+</div>
+<!-- Photography -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-low rounded-3xl flex flex-col items-center justify-center gap-4 transition-all group-hover:bg-secondary-container/20 group-hover:-translate-y-2">
+<div class="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center shadow-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined text-4xl">camera</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface group-hover:text-secondary">Photography</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Preview (Bento Grid) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-display-lg-mobile md:font-headline-md text-primary mb-4">Experiencias Destacadas</h2>
+<p class="max-w-2xl mx-auto text-on-surface-variant">Momentos curados por expertos para viajeros que buscan autenticidad.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-[800px] md:h-[600px]">
+<!-- Large Feature -->
+<div class="md:col-span-7 relative group overflow-hidden rounded-3xl cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A luxurious glass-walled eco-lodge nestled in a lush, foggy tropical jungle of Costa Rica. The architecture is modern and minimalist, with warm interior lighting glowing against the cool, dark greens of the forest. The atmosphere is serene and exclusive, evoking a sense of high-end editorial discovery and sustainable luxury." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDeA9U6jvTRfi-G6-wwOy56eEr1yKBonYgCVEByjTFUIZztjn8TBiqMLBD95Uj1W20jR3CDi7bbbuE6X_3Bsfb_l_7295gqR_dH7W2qKCZ0BZNRjNKtG35H_6Esas0a7On7r6_SpGC2P99-wouCjfih7NPRkrmswurNIfNaO40FXARtMIgthuFwhQiOWcFhrO01O_oCnRAhPu848WbHmeq6sUh0RjjUk8MxmBFlAHozWdaNTTQdTADbBIFF7iAZdzI_akdTtEK4eQvx')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 text-on-primary">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-secondary text-on-secondary px-3 py-1 rounded-full text-label-sm font-label-sm">Mas Popular</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm">4.9 (120)</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Eco-Refugio en la Selva</h3>
+<p class="font-body-md text-body-md opacity-90 mb-4">Costa Rica • Inmersión Total</p>
+<span class="inline-block border border-on-primary/30 px-6 py-2 rounded-full hover:bg-on-primary hover:text-primary transition-colors">Desde $450</span>
+</div>
+</div>
+<!-- Side Grid -->
+<div class="md:col-span-5 grid grid-rows-2 gap-6">
+<div class="relative group overflow-hidden rounded-3xl cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Close-up of traditional Japanese street food being prepared by a master chef in a narrow, atmospheric neon-lit Tokyo alleyway at night. Steam rises from a hot griddle, catching the vibrant blue and pink lights. The mood is authentic, energetic, and culturally rich, captured with a cinematic shallow depth of field." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkoHHhKjkbfzBKurCgCC0S8fD1VULokkpt_eNPgvKetWJQmPzCOGgzx_8Bme-KMe7_7_JMLxVd0pbqImKSCFwlaPD_BvpQ_m8iYlaQt4nOu3oEfW7ncS812pYz_hXVOQdUSjlU43lhclQHRsFbwCXm-xHlVAolzD9_skLpL-jMBqYaBR41OA55cbvjf3-mtcpnY5t4RUvkHPANXBhFC_toJXsJ28IltMUqwlQO_mf3NHl5l2YvKm-w0vGkua2CLerfOiNkWUVyPWkc')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 text-on-primary">
+<h3 class="font-headline-md text-headline-md mb-1">Ruta Gastronómica</h3>
+<p class="font-label-sm text-label-sm opacity-90">Tokio, Japón</p>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-3xl cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A person sitting on a wooden dock overlooking a crystalline turquoise lake in the Swiss Alps, surrounded by towering snow-capped mountains under a clear blue sky. The image is bright, airy, and evokes a feeling of peaceful solitude and majestic natural beauty. High-key lighting highlights the pristine environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsC6SpjsLTt9-ji5rhZ3Xj0MBIfw8sX37oR78eaPhnzgir6RkKGTm3FUPKrW7tFIkDfJ_VAcN--Z173E8MBC433Xd3_3hdRGfm7CAM35mw1krwakDQYRnGB9pb0V6qDa-7l2-O9Ff6XXHl7-sUKf0Vwdw6jwFCs2GNo6aPCPmq6mhzKlaVP8yUNRdxR4pQB6jJW16bpvQEO8R3nlKmzJz_Dfz8B40Qi_v5WWSPwTT6TOe2K8C6U8MSjY_gdwIGWzWE5-fxPPtwImM5')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 text-on-primary">
+<h3 class="font-headline-md text-headline-md mb-1">Retiro de Montaña</h3>
+<p class="font-label-sm text-label-sm opacity-90">Alpes Suizos</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-16 bg-surface-container-low">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center px-margin-desktop py-12 max-w-container-max mx-auto border-t border-outline-variant">
+<div class="mb-8 md:mb-0">
+<span class="font-headline-md text-headline-md text-primary block mb-4">Wanderlust Labs</span>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-xs mb-6">
+                    Redefiniendo la forma en que el mundo descubre y experimenta los viajes.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">public</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<h4 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Explorar</h4>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">About Us</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Soporte</h4>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Safety</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Help Center</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Legal</h4>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Privacy</a>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+<span>© 2024 Wanderlust Labs. All rights reserved.</span>
+<div class="flex gap-6 mt-4 md:mt-0">
+<span class="flex items-center gap-1 cursor-pointer hover:text-primary"><span class="material-symbols-outlined text-sm">language</span> Español (ES)</span>
+<span class="flex items-center gap-1 cursor-pointer hover:text-primary"><span class="material-symbols-outlined text-sm">payments</span> USD</span>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar for Mobile -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-4 bg-surface shadow-lg md:hidden z-50 border-t border-outline-variant pb-safe">
+<a class="flex flex-col items-center justify-center text-secondary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">luggage</span>
+<span class="font-label-sm text-label-sm">Trips</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for smooth transitions
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section > div').forEach(el => {
+                el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body></html>

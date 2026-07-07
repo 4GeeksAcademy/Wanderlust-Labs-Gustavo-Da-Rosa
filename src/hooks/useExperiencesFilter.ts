@@ -10,6 +10,10 @@ export type ExperienceFilters = {
   destination?: string;
 };
 
+function escapeRegExp(text: string) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 export function useExperiencesFilter() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -22,11 +26,12 @@ export function useExperiencesFilter() {
   };
 
   const filteredExperiences = useMemo(() => {
+    const searchRegex = activeFilters.search
+      ? new RegExp(escapeRegExp(activeFilters.search), 'i')
+      : null;
+
     return experiences.filter((experience) => {
-      if (
-        activeFilters.search &&
-        !new RegExp(activeFilters.search, 'i').test(experience.title)
-      ) {
+      if (searchRegex && !searchRegex.test(experience.title)) {
         return false;
       }
 

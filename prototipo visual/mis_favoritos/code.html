@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .favorite-active {
+            font-variation-settings: 'FILL' 1;
+            color: #9b4500;
+        }
+        /* Custom scrollbar for a premium feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fcf9f8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dcd9d9;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c3c6d1;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#999c9e",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e0e3e5",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#001b3c",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#ffb68d",
+                    "surface-dim": "#dcd9d9",
+                    "surface-variant": "#e5e2e1",
+                    "on-surface": "#1c1b1b",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "secondary-container": "#fc8a40",
+                    "background": "#fcf9f8",
+                    "tertiary": "#1b1f21",
+                    "on-secondary-container": "#672c00",
+                    "on-tertiary-fixed-variant": "#434749",
+                    "on-tertiary-fixed": "#181c1e",
+                    "outline-variant": "#c3c6d1",
+                    "primary": "#001e40",
+                    "inverse-primary": "#a7c8ff",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "on-secondary": "#ffffff",
+                    "outline": "#737780",
+                    "surface-tint": "#3a5f94",
+                    "surface": "#fcf9f8",
+                    "surface-container": "#f0eded",
+                    "on-surface-variant": "#43474f",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "secondary": "#9b4500",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "primary-container": "#003366",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#799dd6",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#763300",
+                    "primary-fixed": "#d5e3ff",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fcf9f8",
+                    "surface-container-high": "#eae7e7",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-secondary-fixed": "#331200",
+                    "tertiary-container": "#303436",
+                    "secondary-fixed": "#ffdbc9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">
+                Wanderlust Labs
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md" href="#">Explore</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md" href="#">Stays</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md" href="#">Adventures</a>
+<!-- Journal is active based on page context (Favorites often mapped to Journal/Saved) -->
+<a class="text-secondary dark:text-secondary-fixed-dim border-b-2 border-secondary font-bold pb-1 font-body-md text-body-md" href="#">Journal</a>
+</div>
+<div class="hidden md:flex items-center space-x-4">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity font-label-sm text-label-sm">Log In</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-sm text-label-sm hover:opacity-90 active:scale-95 transition-all">Sign Up</button>
+</div>
+<!-- Mobile Menu Trigger (Visual only) -->
+<button class="md:hidden p-2">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+</nav>
+</header>
+<main class="flex-grow max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-12">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-md text-headline-md md:font-display-lg md:text-display-lg text-primary mb-2">Tus Favoritos</h1>
+<p class="text-on-surface-variant font-body-md text-body-md">Has guardado <span class="font-bold text-secondary">6</span> experiencias inolvidables.</p>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Filtrar por categoría</span>
+</div>
+</div>
+</header>
+<!-- Experience Cards Grid (Populated State) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter" id="favorites-grid">
+<!-- Card 1 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A luxury glass cabin nestled in a snowy Nordic forest during the blue hour. Soft interior lights glow warmly against the deep blue and white snow landscape. The style is high-end editorial photography with crisp details and a serene, minimalist atmosphere using a palette of ice blues and warm amber." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfYOHtjk4V-ISgCOjcv8Mp6kRtzslpPfnFAw5yw4lfwoVW7RxcqqncCuHNQ8rYX0F4kAarI72GMlSdk0szyGHrEe2gGUGFeVFAfUlEohFUTO-qfDQUy4usYdiKR8LJbJMweB1S6Et7sPrOtVJk6HKAeXkv_5u_H3bg0l43aVqwuq74vIkwa9tjKrDmbYtrbjm3ec1z194LbWnIgoG-orLVSw3MTE3rddv6wsCsucSTy7VWDAr8Ziw3jBtYd2pFAV47SLmsC0kNvTIt"/>
+<button class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined favorite-active" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-label-sm font-label-sm">
+                        Popular
+                    </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Refugio de Cristal Ártico</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-sm">4.9</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4">Laponia, Finlandia</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<p class="text-primary font-bold"><span class="text-secondary text-headline-md">$450</span> / noche</p>
+<button class="text-secondary font-bold hover:underline transition-all font-label-sm">Reservar ahora</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A lush tropical villa overlooking a turquoise ocean in Bali. The architecture features dark wood and open-air spaces surrounded by vibrant emerald green jungle foliage. Bright morning sunlight filters through the palms, creating a high-contrast, energetic vacation mood. The aesthetic is clean and modern corporate travel chic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzQLresO_bRAoC2wTTg4YW_33IIlr7dVkHoTkUCssGmE_6J2NCQo19Mt6rCTnk8NyxknhIG5j29ebLBx90FrgSaUvYSRZaU73C4F3kVHwDitpJ_3vPh8fDLePLWfS3hHvTnVSjhQVz2GKdoXga0qbf4RQ0rJV7Q9rSYrhYPIen7H1GDnmWi7RwcgGhQ7sjzGXvE9a8TGktabH_StGGLaLhSQl-YqLynwzwBvvOpTK05ApIoV-6T5tVfmEhZsuK2MWD4tTxEUB-NGLU"/>
+<button class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-md">
+<span class="material-symbols-outlined favorite-active" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Villa Serena en la Selva</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-sm">4.8</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4">Ubud, Bali</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<p class="text-primary font-bold"><span class="text-secondary text-headline-md">$280</span> / noche</p>
+<button class="text-secondary font-bold hover:underline transition-all font-label-sm">Reservar ahora</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist boutique hotel terrace in Santorini at sunset. The iconic white-washed architecture contrasts beautifully with a deep orange and purple sky. The Aegean sea is visible in the background. The lighting is warm and golden, emphasizing luxury and peaceful solitude. A professional travel editorial look with high-key whites and sunset orange accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChU8xGtE4_WydpZUXbc3cmWxEehqrYvOX-n6SY770GxX7dIqoab1YGM8MITFBzE1HelhBUCfKkwE_jYzg69zOWJAs7sgFFM5xQ5LszkWQX6cKwAm0ZjPfWcf8YaB4ht-REycsmVFA4qcTfklyTUhbVKGn_lL015j0P3PM5eDT38uYEKJ_oRGk2hsuTIBhJonuAEcjgYVDntbxVLes_u9YQp3eMpWi1z68FlbNW8PGnZ0rDvOLwPmzxJKYhUC2GQ8nIQLj5FEnoLcQq"/>
+<button class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-md">
+<span class="material-symbols-outlined favorite-active" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Terraza del Sol Poniente</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-sm">5.0</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4">Oia, Grecia</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<p class="text-primary font-bold"><span class="text-secondary text-headline-md">$520</span> / noche</p>
+<button class="text-secondary font-bold hover:underline transition-all font-label-sm">Reservar ahora</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A futuristic sustainable treehouse suspended in a redwood forest in Oregon. The design is geometric with large panoramic windows and cedar wood finishes. Mist rolls through the tall trees in the background, creating a moody, atmospheric Pacific Northwest vibe. The color palette is composed of deep forest greens, earthy browns, and cool greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-GNll-Ng--KyRJTyMnv9671X57FgsGomGMTQ646uTDKiP4OULLYXzMJjbJ63BZqlxboQYa0dv7zUxvip0l60vJYs3WfFZ9eUmZigpmTtO1NfK9y210fDZ6O-rLDViqgEZ4tHJpznzePkLwI3cgIvbrDvdz0AHXRLoN_c6gcgHbfC0Ltf-dAL7JR1t3M0pmI30ahjoW1mBrLbZ8odQsFUWew9tXkv8Wzbq1RDKyJSmvr1R60kCl12K7mkd1sz3NbrCqmqh4VB8M9CB"/>
+<button class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-md">
+<span class="material-symbols-outlined favorite-active" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Eco-Treehouse Suspendido</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-sm">4.7</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4">Portland, Oregón</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<p class="text-primary font-bold"><span class="text-secondary text-headline-md">$195</span> / noche</p>
+<button class="text-secondary font-bold hover:underline transition-all font-label-sm">Reservar ahora</button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An ultra-modern desert villa in Joshua Tree with a sleek infinity pool reflecting the starry night sky. The architecture is sharp and cubic, built from raw concrete and glass. Cinematic low-light photography captures the silhouette of Joshua trees against a cosmic Milky Way background. A sophisticated, luxury adventure aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPZI5o0XZCAbqUu2tLgOcaYjE5X83UbdBwYZ2K5yq4pEnT2R39A2PYVOGGWPO_2CwKF5Ez8gI96Uy6d4t_v8nhiyncAlEhCnD-h0VBfK5TX_nJ_YTZqxf1oKQ_M_oaaF5e21wMEjSV0sZdJ7bDTcqDChf9Q9g5G2JgMNhAkOWNlq1fplTxA_pe6UzXHxf90MoHW43AsW5oWih0KKnTByrrzek-QtldvmwVDH6RYKvz90m93ysEQj5zc3XBsI3LPUO6I1d8KTZenYPt"/>
+<button class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-md">
+<span class="material-symbols-outlined favorite-active" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Residencia del Desierto</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-sm">4.9</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4">Joshua Tree, California</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<p class="text-primary font-bold"><span class="text-secondary text-headline-md">$610</span> / noche</p>
+<button class="text-secondary font-bold hover:underline transition-all font-label-sm">Reservar ahora</button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cozy traditional Japanese Ryokan with a steaming outdoor hot spring (onsen) during cherry blossom season. Soft pink petals fall into the clear water. Traditional wooden slats and paper lanterns create a warm, inviting glow. The image is clean and peaceful, using a palette of soft pinks, natural wood tones, and cool water blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-4M5D7lVOnge1YHdrQAkcXLS1EC0e2RRdIB6If8y0EPxNsiRh-W2bxkTQm9XpSExfd77tj5Eqqf-DZ_iIyO8TCuLxqI669i4dz0yu2dLdJw-cuWsoTdUoiyU5kBxdlUQpNGlay5j34Q21z_4gtb9tGuvK3zVR57gmZXzBE7bLN6qEMQGVb_vLUUeSrTWh1zT3tc8ievNcDVn7_4ER5xPhSV2yAejJiiBDhh105dMd0qsMxg809XOnmlpqM7z7u23btlRaZvdVFw3t"/>
+<button class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-md">
+<span class="material-symbols-outlined favorite-active" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Zen Ryokan &amp; Onsen</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-sm">4.9</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4">Kyoto, Japón</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<p class="text-primary font-bold"><span class="text-secondary text-headline-md">$340</span> / noche</p>
+<button class="text-secondary font-bold hover:underline transition-all font-label-sm">Reservar ahora</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-24 text-center max-w-md mx-auto" id="empty-state">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center mb-6 text-on-surface-variant">
+<span class="material-symbols-outlined text-4xl">favorite_border</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Aún no tienes favoritos</h2>
+<p class="text-on-surface-variant font-body-md text-body-md mb-8">
+                ¡Explora experiencias para guardar tus preferidas y planificar tu próximo viaje inolvidable!
+            </p>
+<a class="bg-secondary text-white px-8 py-3 rounded-full font-bold shadow-md hover:shadow-lg active:scale-95 transition-all" href="#">
+                Explorar experiencias
+            </a>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-16 bg-surface-container-low dark:bg-tertiary-container border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 max-w-container-max mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tight">Wanderlust Labs</div>
+<p class="text-on-surface-variant font-body-md text-body-md">© 2024 Wanderlust Labs. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md text-body-md" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md text-body-md" href="#">Safety</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md text-body-md" href="#">Terms</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md text-body-md" href="#">Privacy</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md text-body-md" href="#">Careers</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-4 bg-surface dark:bg-surface-container pb-safe md:hidden z-50 border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-container font-bold active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">luggage</span>
+<span class="font-label-sm text-label-sm">Trips</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for un-favoriting items
+        const favButtons = document.querySelectorAll('.favorite-active');
+        favButtons.forEach(btn => {
+            btn.parentElement.addEventListener('click', function(e) {
+                const card = this.closest('.group');
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    card.remove();
+                    checkEmptyState();
+                }, 300);
+            });
+        });
+
+        function checkEmptyState() {
+            const grid = document.getElementById('favorites-grid');
+            const emptyState = document.getElementById('empty-state');
+            if (grid.children.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+            }
+        }
+    </script>
+</body></html>

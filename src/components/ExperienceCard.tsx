@@ -1,7 +1,8 @@
 'use client';
 
 import type { MouseEvent } from 'react';
-import type { Experience } from '../experiences';
+import Link from 'next/link';
+import type { Experience } from '../data/experiences';
 
 type ExperienceCardProps = {
   experience: Experience;
@@ -24,53 +25,55 @@ export default function ExperienceCard({
   };
 
   return (
-    <article className="flex flex-col bg-white overflow-hidden">
-      <div className="relative mb-3">
-        <img
-          src={experience.image || experience.imageUrl}
-          alt={experience.title}
-          className="rounded-xl aspect-[4/3] object-cover w-full"
-          loading="lazy"
-        />
+    <article className="card-surface group flex flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <Link href={`/experiences/${experience.id}`} className="group block">
+        <div className="relative overflow-hidden">
+          <img
+            src={experience.image || experience.imageUrl}
+            alt={experience.title}
+            className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
 
-        <button
-          type="button"
-          onClick={handleFavoriteClick}
-          aria-label={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-          className="absolute right-2.5 top-2.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/75 backdrop-blur-sm transition hover:bg-white"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            className={`h-5 w-5 ${
-              isFavorite ? 'fill-red-500 text-red-500' : 'fill-none text-slate-700'
-            }`}
-            stroke="currentColor"
-            strokeWidth="2"
+          <button
+            type="button"
+            onClick={handleFavoriteClick}
+            aria-label={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+            className="absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/85 shadow-sm backdrop-blur-md transition hover:bg-white"
           >
-            <path d="M12 21s-7.2-4.35-9.3-8.38C1.2 9.6 2.4 6 6 6c2.08 0 3.42 1.13 4 2.1C10.58 7.13 11.92 6 14 6c3.6 0 4.8 3.6 3.3 6.62C19.2 16.65 12 21 12 21z" />
-          </svg>
-        </button>
-      </div>
-
-      <div className="flex flex-1 flex-col">
-        <p className="text-xs text-gray-500 font-medium tracking-wide">
-          {experience.destination} · {experience.category}
-        </p>
-        <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 mt-1 leading-snug">
-          {experience.title}
-        </h3>
-
-        <p className="text-xs text-gray-600 flex items-center gap-1 mt-1">
-          <span className="text-amber-500">★</span>
-          <span>{experience.rating.toFixed(1)}</span>
-          <span>({reviewsCount})</span>
-        </p>
-
-        <div className="mt-3 flex items-end justify-between">
-          <p className="text-xs text-gray-600">Desde <span className="font-bold text-gray-900">USD {experience.price}</span></p>
-          <p className="text-xs text-gray-500">por persona</p>
+            <svg
+              viewBox="0 0 24 24"
+              className={`h-5 w-5 ${
+                isFavorite ? 'fill-secondary text-secondary' : 'fill-none text-slate-700'
+              }`}
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M12 21s-7.2-4.35-9.3-8.38C1.2 9.6 2.4 6 6 6c2.08 0 3.42 1.13 4 2.1C10.58 7.13 11.92 6 14 6c3.6 0 4.8 3.6 3.3 6.62C19.2 16.65 12 21 12 21z" />
+            </svg>
+          </button>
         </div>
-      </div>
+
+        <div className="flex flex-1 flex-col p-4 sm:p-5">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+            {experience.destination} · {experience.category}
+          </p>
+          <h3 className="font-display mt-2 line-clamp-2 text-lg font-semibold leading-tight text-primary transition group-hover:text-primary/80">
+            {experience.title}
+          </h3>
+
+          <p className="mt-2 flex items-center gap-1 text-sm text-slate-600">
+            <span className="text-secondary">★</span>
+            <span>{experience.rating.toFixed(1)}</span>
+            <span>({reviewsCount})</span>
+          </p>
+
+          <div className="mt-4 flex items-end justify-between border-t border-outline/60 pt-3">
+            <p className="text-sm text-slate-600">Desde <span className="text-lg font-bold text-primary">USD {experience.price}</span></p>
+            <p className="text-xs text-slate-500">por persona</p>
+          </div>
+        </div>
+      </Link>
     </article>
   );
 }

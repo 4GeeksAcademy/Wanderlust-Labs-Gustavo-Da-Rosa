@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wanderlust Labs | Explorador de Experiencias</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#999c9e",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e0e3e5",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#001b3c",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#ffb68d",
+                    "surface-dim": "#dcd9d9",
+                    "surface-variant": "#e5e2e1",
+                    "on-surface": "#1c1b1b",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "secondary-container": "#fc8a40",
+                    "background": "#fcf9f8",
+                    "tertiary": "#1b1f21",
+                    "on-secondary-container": "#672c00",
+                    "on-tertiary-fixed-variant": "#434749",
+                    "on-tertiary-fixed": "#181c1e",
+                    "outline-variant": "#c3c6d1",
+                    "primary": "#001e40",
+                    "inverse-primary": "#a7c8ff",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "on-secondary": "#ffffff",
+                    "outline": "#737780",
+                    "surface-tint": "#3a5f94",
+                    "surface": "#fcf9f8",
+                    "surface-container": "#f0eded",
+                    "on-surface-variant": "#43474f",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "secondary": "#9b4500",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "primary-container": "#003366",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#799dd6",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#763300",
+                    "primary-fixed": "#d5e3ff",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fcf9f8",
+                    "surface-container-high": "#eae7e7",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-secondary-fixed": "#331200",
+                    "tertiary-container": "#303436",
+                    "secondary-fixed": "#ffdbc9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .experience-card:hover img {
+            transform: scale(1.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">Wanderlust Labs</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary dark:text-secondary-fixed-dim border-b-2 border-secondary font-bold pb-1" href="#">Explore</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors" href="#">Stays</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors" href="#">Adventures</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors" href="#">Journal</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant font-label-sm hover:opacity-80 transition-opacity duration-200">Log In</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-sm hover:opacity-90 active:scale-95 transition-all shadow-md">Sign Up</button>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Hero Search Section -->
+<section class="mb-16">
+<h1 class="font-display-lg text-display-lg mb-8 text-primary max-w-2xl leading-tight">Encuentra tu próxima aventura inolvidable.</h1>
+<div class="bg-surface-container-lowest p-2 rounded-2xl shadow-xl flex flex-col md:flex-row items-stretch gap-2 border border-outline-variant/30">
+<div class="flex-1 flex items-center px-4 bg-surface-container-low rounded-xl group focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-4 text-body-md text-on-surface placeholder:text-outline-variant" id="searchInput" placeholder="Buscar experiencias (ej. Surf, Yoga, Trekking...)" type="text"/>
+</div>
+<div class="flex flex-col md:flex-row gap-2">
+<div class="relative min-w-[160px]">
+<select class="w-full appearance-none bg-surface-container-low border-none rounded-xl py-4 pl-4 pr-10 text-body-md text-on-surface focus:ring-2 focus:ring-primary/20 cursor-pointer" id="categoryFilter">
+<option value="">Todas las Categorías</option>
+<option value="aventura">Aventura</option>
+<option value="bienestar">Bienestar</option>
+<option value="cultura">Cultura</option>
+<option value="gastronomia">Gastronomía</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+<div class="relative min-w-[160px]">
+<select class="w-full appearance-none bg-surface-container-low border-none rounded-xl py-4 pl-4 pr-10 text-body-md text-on-surface focus:ring-2 focus:ring-primary/20 cursor-pointer" id="destinationFilter">
+<option value="">Cualquier Destino</option>
+<option value="patagonia">Patagonia</option>
+<option value="andes">Los Andes</option>
+<option value="costa">Costa Brava</option>
+<option value="bali">Bali</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">location_on</span>
+</div>
+<button class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span>Explorar</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Experience Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter" id="resultsGrid">
+<!-- Experience Card 1 -->
+<article class="experience-card group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/10">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500" data-alt="A cinematic wide shot of a traveler trekking through the rugged, snow-capped peaks of Patagonia during the golden hour. The lighting is warm and soft, casting long shadows across the turquoise glacial lakes. The overall aesthetic is high-end editorial, with a color palette of deep ocean blues, crisp whites, and sunset oranges. The mood is adventurous yet serene, capturing the raw beauty of the wilderness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUbPZ7FPWpSi0A47yZ_H0QaSmzit_WYucxzXCpDV5y-fts7yLukMZtfCRke3GKvbz6niE0FbfPaot8ehroZh8UmyRzHB55TuDI-Y4Jvih-2GlTCtTzUgygXHststOXaUznPvkKkhx9GL9BU-7bNNu00v7a45d2vQRRb0LFpl1iaATf887jPV_nNILm9SnVWaoVYC9qmBMUIr7rhpu-qLqCnYn70WuANxQ-2R0orLopMTJtS_dtqZXOx5qtYr0H6mRNbCSQNmna7T4W"/>
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-primary hover:text-error transition-colors shadow-sm" onclick="toggleHeart(this)">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 bg-secondary/90 text-on-secondary px-3 py-1 rounded-full text-label-sm flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-sm text-secondary uppercase tracking-wider">Aventura</span>
+<span class="text-label-sm text-outline">Patagonia, AR</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-4 leading-tight">Expedición Glaciar Fitz Roy</h3>
+<div class="mt-auto flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-label-sm text-outline">Desde</span>
+<span class="font-bold text-lg text-primary">$1,250 <span class="text-body-md font-normal text-on-surface-variant">/ pers</span></span>
+</div>
+<button class="text-primary font-bold text-label-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Reservar <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Experience Card 2 -->
+<article class="experience-card group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/10">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500" data-alt="A tranquil, minimalist interior of a high-end yoga studio in Bali, featuring sustainable bamboo architecture and large windows overlooking a lush, tropical jungle. Soft morning sunlight filters through the palm leaves, creating a peaceful and rejuvenating atmosphere. The color palette consists of earthy tones, sage greens, and soft whites. The style is modern corporate wellness mixed with organic minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmqGogBvYDeGGL2IFm2iFasZYsWJdTE9fdL0TXsacNFqpYvNyTQn4MABfKQSn8jDeO3njMz4tn_BP6cc4aNXLdWG4MZYJy-zx2CC4dp7vyAi9CoHOsT9fsqlFGvMKQkyUB-43WB-d0eaBbu3BZfG2AslCWBESFWWxB2inoiL_hLxrCYLpMtJdfebrn-B2fT9pOSt-2V7HoNlh4UaPiT28ny_HElJFW2nruX8ZlB0jqcrm-LA8P50AXmR5iggacav4CYU9FpgemoKMV"/>
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-primary hover:text-error transition-colors shadow-sm" onclick="toggleHeart(this)">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 bg-secondary/90 text-on-secondary px-3 py-1 rounded-full text-label-sm flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>5.0</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-sm text-secondary uppercase tracking-wider">Bienestar</span>
+<span class="text-label-sm text-outline">Ubud, Bali</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-4 leading-tight">Retiro de Meditación y Yoga</h3>
+<div class="mt-auto flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-label-sm text-outline">Desde</span>
+<span class="font-bold text-lg text-primary">$890 <span class="text-body-md font-normal text-on-surface-variant">/ pers</span></span>
+</div>
+<button class="text-primary font-bold text-label-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Reservar <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Experience Card 3 -->
+<article class="experience-card group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/10">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500" data-alt="An elegant, candle-lit dinner setting on a private terrace overlooking the Mediterranean coast of Costa Brava. The scene features authentic local seafood dishes and white wine, with the deep blue sea and a twilight sky in the background. The lighting is intimate and high-contrast, emphasizing the textures of the food and the coastal landscape. The style is sophisticated, editorial travel photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzy5EAoMWgZFyqN-wyuPsx0KGPMeo34TCrPxtfi4KroRfy7a9m4nZ2aoXg6tuRPEkvkGYzJKDeTwVNN9-rFPKRW81Rp7MoElF692LbZNNVZALDD0Wg5US9QB7mtYfgBrwP0puicGyw9uSRRiQ2hSuK4EdnsQq5HiOqbr3lFkKWcsQvr4LCg-UTk7jZBgDweYOn4qRoZZ7FF1s1AIgFGBfRSCa9GwiY9IZYNHNlJxH3u71A9Z-MsJE3Pl0WY4T0mtAjqMhLso3glG4G"/>
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-primary hover:text-error transition-colors shadow-sm" onclick="toggleHeart(this)">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 bg-secondary/90 text-on-secondary px-3 py-1 rounded-full text-label-sm flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-sm text-secondary uppercase tracking-wider">Gastronomía</span>
+<span class="text-label-sm text-outline">Costa Brava, ES</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-4 leading-tight">Cena Privada frente al Mediterráneo</h3>
+<div class="mt-auto flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-label-sm text-outline">Desde</span>
+<span class="font-bold text-lg text-primary">$450 <span class="text-body-md font-normal text-on-surface-variant">/ pers</span></span>
+</div>
+<button class="text-primary font-bold text-label-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Reservar <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Experience Card 4 -->
+<article class="experience-card group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/10">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500" data-alt="A professional high-angle shot of professional surfers riding powerful, translucent turquoise waves at a world-class beach break. The bright afternoon sun creates sparkling highlights on the water's surface. The color palette is vibrant, dominated by shades of primary blue and white foam. The image captures the adrenaline and high-energy of the sport in a clean, modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1PxcWq1nhOWZYm45HTXY628yXHZv3FznA-GwqynDd03-bjOsDnu8KsgkFZDdeskdOYyj0Yj7r8rLDsKW71SXyHG-1p002Ob13W1mkm3c4chEdSXzhewVl6e1x4Yr0FgG3fgnsRZ_hLFkdz6JeTB-dpSJ_4fPmfM0fkOntYiuwJBbx22UzLQz2xTqR1uDg5Ii2xHnkJQjlJ1FMFNh8x89dqHGHB4ShDRUCBehjXnnkKwGFcOsbuZZ8CfKoKXS54i0ynIoIx-xaiBny"/>
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-primary hover:text-error transition-colors shadow-sm" onclick="toggleHeart(this)">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 bg-secondary/90 text-on-secondary px-3 py-1 rounded-full text-label-sm flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.7</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-sm text-secondary uppercase tracking-wider">Aventura</span>
+<span class="text-label-sm text-outline">Ericeira, PT</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-4 leading-tight">Masterclass de Surf Pro</h3>
+<div class="mt-auto flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-label-sm text-outline">Desde</span>
+<span class="font-bold text-lg text-primary">$320 <span class="text-body-md font-normal text-on-surface-variant">/ pers</span></span>
+</div>
+<button class="text-primary font-bold text-label-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Reservar <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- No Results State (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-24 text-center max-w-md mx-auto" id="noResults">
+<div class="w-24 h-24 mb-6 bg-surface-container-high rounded-full flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-5xl">search_off</span>
+</div>
+<h2 class="font-headline-md text-primary mb-2">No encontramos resultados</h2>
+<p class="text-on-surface-variant mb-8">Intenta ajustar tus filtros o buscar algo diferente. Tal vez ese rincón del mundo aún espera ser descubierto.</p>
+<button class="text-secondary font-bold hover:underline" onclick="resetFilters()">Limpiar todos los filtros</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-16 bg-surface-container-low dark:bg-tertiary-container">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="font-headline-md text-headline-md text-primary mb-2">Wanderlust Labs</div>
+<p class="text-on-surface-variant text-body-md">Descubriendo lo extraordinario, una experiencia a la vez.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 md:mb-0">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">Safety</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">Terms</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">Privacy</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary transition-colors font-body-md" href="#">Careers</a>
+</div>
+<div class="text-on-surface-variant dark:text-on-tertiary-container font-body-md">
+                © 2024 Wanderlust Labs. All rights reserved.
+            </div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-4 bg-surface dark:bg-surface-container pb-safe md:hidden z-50 border-t border-outline-variant shadow-lg">
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-container font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container">
+<span class="material-symbols-outlined">luggage</span>
+<span class="font-label-sm text-label-sm">Trips</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions and Logic
+        function toggleHeart(btn) {
+            const span = btn.querySelector('.material-symbols-outlined');
+            const isFilled = span.style.fontVariationSettings.includes("'FILL' 1");
+            
+            if (isFilled) {
+                span.style.fontVariationSettings = "'FILL' 0";
+                btn.classList.remove('text-error');
+                btn.classList.add('text-primary');
+            } else {
+                span.style.fontVariationSettings = "'FILL' 1";
+                btn.classList.add('text-error');
+                btn.classList.remove('text-primary');
+                // Trigger a small scale animation
+                btn.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(1.3)' },
+                    { transform: 'scale(1)' }
+                ], { duration: 300, easing: 'ease-out' });
+            }
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        const grid = document.getElementById('resultsGrid');
+        const noResults = document.getElementById('noResults');
+
+        // Simple Search Filter Simulation
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const cards = grid.querySelectorAll('article');
+            let hasMatch = false;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const match = title.includes(query);
+                card.style.display = match ? 'flex' : 'none';
+                if(match) hasMatch = true;
+            });
+
+            if (!hasMatch && query !== '') {
+                grid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            } else {
+                grid.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            }
+        });
+
+        function resetFilters() {
+            searchInput.value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('destinationFilter').value = '';
+            const cards = grid.querySelectorAll('article');
+            cards.forEach(card => card.style.display = 'flex');
+            grid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+        }
+
+        // Dropdown listeners for layout feedback
+        [document.getElementById('categoryFilter'), document.getElementById('destinationFilter')].forEach(select => {
+            select.addEventListener('change', () => {
+                // In a real app, this would trigger a re-fetch or serious filter logic
+                console.log('Filter changed:', select.value);
+            });
+        });
+    </script>
+</body></html>
